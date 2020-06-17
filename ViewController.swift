@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
 
-        currencyToConvertTextFieled.layer.borderColor = UIColor.white.cgColor
+        convertedCurrencyLabel.numberOfLines = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,6 +104,8 @@ class ViewController: UIViewController {
     @IBAction func undwindToCurList(segue: UIStoryboardSegue) {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
+        
+        makeRequest()
     }
 }
 

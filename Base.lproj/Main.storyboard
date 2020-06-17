@@ -15,6 +15,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Iwq-5e-SKD"/>
@@ -24,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-710" y="127"/>
         </scene>
-        <!--View Controller-->
+        <!--Currency converter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ForeignExchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ddd-ZV-3oC"/>
+                    <navigationItem key="navigationItem" title="Currency converter" largeTitleDisplayMode="never" id="ddd-ZV-3oC"/>
                     <connections>
                         <outlet property="convertButton" destination="aIc-MM-LHP" id="sxC-S6-PXQ"/>
                         <outlet property="convertedCurrencyButton" destination="uSl-9R-gmA" id="G9r-de-EEZ"/>
