@@ -43,6 +43,16 @@ class ViewController: UIViewController {
         }
     }
     
+    func addToHistory() {
+        let doubleCurrencyValue = String(Double(self.currencyToConvertTextFieled.text!)!) + " " + ViewController.baseCurrency
+        let convertion = Convertion(currencyToConvertImage: ViewController.imageCurrencyToConvert!, convertedCurrencyImage: ViewController.imageConvertedCurrency!,
+                                    toConvertValue: doubleCurrencyValue,
+                                    convertedValue: self.convertedCurrencyLabel.text!)
+        
+        HistoryTableViewController.histories.append(convertion)
+        HistoryTableViewController.histories = HistoryTableViewController.histories.reversed()
+    }
+    
     @IBAction func changeButtonTapped(_ sender: UIButton) {
         swap(&ViewController.imageCurrencyToConvert, &ViewController.imageConvertedCurrency)
         
@@ -67,6 +77,7 @@ class ViewController: UIViewController {
                         if let currentValue = Double(self.currencyToConvertTextFieled.text!) {
                             let total = currentValue * conv
                             self.convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
+                            self.addToHistory()
                         } else {
                             self.convertedCurrencyLabel.text = String(0)
                         }
@@ -87,7 +98,6 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
 
-        convertedCurrencyLabel.numberOfLines = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
