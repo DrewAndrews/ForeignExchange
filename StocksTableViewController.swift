@@ -34,7 +34,6 @@ class StocksTableViewController: UITableViewController {
             let json = try? JSONSerialization.jsonObject(with: data, options: []) {
                 let stockJson = json as! [String: Any]
                 if let stockProperties = stockJson["Global Quote"] as? [String: Any] {
-                    print(stockProperties)
                     let name = stockProperties["01. symbol"] as! String
                     let open = stockProperties["02. open"] as! String
                     let high = stockProperties["03. high"] as! String

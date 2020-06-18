@@ -91,13 +91,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        convertButton.layer.cornerRadius = 7.0
+        convertButton.layer.cornerRadius = 13.0
         
         self.hideKeyboard()
         
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
-
+        
+        
+        currencyToConvertTextFieled.layer.borderWidth = 1
+        currencyToConvertTextFieled.layer.borderColor = UIColor.lightGray.cgColor
+        currencyToConvertTextFieled.layer.cornerRadius = 20
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
