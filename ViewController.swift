@@ -117,5 +117,9 @@ class ViewController: UIViewController {
         
         makeRequest()
     }
+    
+    @IBAction func unwindAndClear(segue: UIStoryboardSegue) {
+        HistoryTableViewController.histories.removeAll()
+    }
 }
 
