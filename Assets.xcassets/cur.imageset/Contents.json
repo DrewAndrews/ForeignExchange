@@ -5,11 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "cur.png",
+      "filename" : "cur@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "cur@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

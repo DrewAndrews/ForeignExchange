@@ -35,7 +35,7 @@ class CurrenciesTableViewController: UITableViewController {
 
         cell.textLabel?.text = ""
         cell.detailTextLabel?.text = currencies[indexPath.row]
-        cell.imageView?.image = UIImage(named: currencies[indexPath.row] + "2x")
+        cell.imageView?.image = UIImage(named: currencies[indexPath.row])
 
         return cell
     }
@@ -53,12 +53,12 @@ class CurrenciesTableViewController: UITableViewController {
         
         if segue.identifier == "returnToCurList" {
             if forConverting {
-                ViewController.imageCurrencyToConvert = UIImage(named: currencies[index] + "1x")!
+                ViewController.imageCurrencyToConvert = UIImage(named: currencies[index])!
                 ViewController.baseCurrency = currencies[index]
                 forConverting = false
             }
             else if forResult {
-                ViewController.imageConvertedCurrency = UIImage(named: currencies[index] + "1x")!
+                ViewController.imageConvertedCurrency = UIImage(named: currencies[index])!
                 ViewController.toConvertCurrency = currencies[index]
                 forResult = false
             }

@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     @IBOutlet var currencyToConvertTextFieled: UITextField!
     @IBOutlet var convertedCurrencyLabel: UILabel!
     
-    static var imageCurrencyToConvert = UIImage(named: "USD1x")
-    static var imageConvertedCurrency = UIImage(named: "RUB1x")
+    static var imageCurrencyToConvert = UIImage(named: "USD")
+    static var imageConvertedCurrency = UIImage(named: "RUB")
     
     static var baseCurrency = "USD"
     static var toConvertCurrency = "RUB"
@@ -102,6 +102,10 @@ class ViewController: UIViewController {
         currencyToConvertTextFieled.layer.borderWidth = 1
         currencyToConvertTextFieled.layer.borderColor = UIColor.lightGray.cgColor
         currencyToConvertTextFieled.layer.cornerRadius = 20
+        
+        convertedCurrencyLabel.layer.borderWidth = 1
+        convertedCurrencyLabel.layer.borderColor = UIColor.lightGray.cgColor
+        convertedCurrencyLabel.layer.cornerRadius = 20
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
