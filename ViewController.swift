@@ -34,12 +34,31 @@ class ViewController: UIViewController {
     static var baseCurrency = "USD"
     static var toConvertCurrency = "RUB"
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        convertButton.layer.cornerRadius = 13.0
+        
+        self.hideKeyboard()
+        
+        currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
+        convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
+        
+        
+        currencyToConvertTextFieled.layer.borderWidth = 1
+        currencyToConvertTextFieled.layer.borderColor = UIColor.lightGray.cgColor
+        currencyToConvertTextFieled.layer.cornerRadius = 20
+        
+        convertedCurrencyLabel.layer.borderWidth = 1
+        convertedCurrencyLabel.layer.borderColor = UIColor.lightGray.cgColor
+        convertedCurrencyLabel.layer.cornerRadius = 20
+    }
+    
     @IBAction func convertButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.7) {
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.7, y: 1.7)
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
             
-            //self.makeRequest()
             self.getAndParse()
         }
     }
@@ -76,31 +95,12 @@ class ViewController: UIViewController {
                     let fieldValue = Double(currencyToConvertTextFieled.text!) {
                     let total = valueToConvert * fieldValue
                     convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
+                    addToHistory()
                 }
             } else {
                 convertedCurrencyLabel.text = String(0)
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        convertButton.layer.cornerRadius = 13.0
-        
-        self.hideKeyboard()
-        
-        currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
-        convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
-        
-        
-        currencyToConvertTextFieled.layer.borderWidth = 1
-        currencyToConvertTextFieled.layer.borderColor = UIColor.lightGray.cgColor
-        currencyToConvertTextFieled.layer.cornerRadius = 20
-        
-        convertedCurrencyLabel.layer.borderWidth = 1
-        convertedCurrencyLabel.layer.borderColor = UIColor.lightGray.cgColor
-        convertedCurrencyLabel.layer.cornerRadius = 20
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
