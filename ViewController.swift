@@ -39,7 +39,8 @@ class ViewController: UIViewController {
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.7, y: 1.7)
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
             
-            self.makeRequest()
+            //self.makeRequest()
+            self.getAndParse()
         }
     }
     
@@ -61,31 +62,25 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
         
-        makeRequest()
+        getAndParse()
     }
     
-    func makeRequest() {
-        let baseURL = URL(string: "https://api.exchangeratesapi.io/latest?base=\(ViewController.baseCurrency)&symbols=\(ViewController.self.toConvertCurrency)")!
+    func getAndParse() {
+        let url = URL(string: "https://api.exchangeratesapi.io/latest?base=\(ViewController.baseCurrency)&symbols=\(ViewController.self.toConvertCurrency)")!
         
-        let task = URLSession.shared.dataTask(with: baseURL) { (data, response, error) in
-            if let data = data,
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                if let dictionary = json as? [String: Any],
-                    let convCurrency = dictionary["rates"] {
-                    let conv = (convCurrency as? [String: Any])![ViewController.self.toConvertCurrency] as! Double
-                    DispatchQueue.main.async {
-                        if let currentValue = Double(self.currencyToConvertTextFieled.text!) {
-                            let total = currentValue * conv
-                            self.convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
-                            self.addToHistory()
-                        } else {
-                            self.convertedCurrencyLabel.text = String(0)
-                        }
-                    }
+        if let data = try? Data(contentsOf: url) {
+            let jsonDecoder = JSONDecoder()
+            
+            if let cur = try? jsonDecoder.decode(Currency.self, from: data) {
+                if let valueToConvert = cur.rates[ViewController.toConvertCurrency],
+                    let fieldValue = Double(currencyToConvertTextFieled.text!) {
+                    let total = valueToConvert * fieldValue
+                    convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
                 }
+            } else {
+                convertedCurrencyLabel.text = String(0)
             }
         }
-        task.resume()
     }
     
     override func viewDidLoad() {
@@ -123,7 +118,7 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
         
-        makeRequest()
+        getAndParse()
     }
     
     @IBAction func unwindAndClear(segue: UIStoryboardSegue) {
