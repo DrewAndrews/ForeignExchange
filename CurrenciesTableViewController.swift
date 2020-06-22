@@ -35,7 +35,7 @@ class CurrenciesTableViewController: UITableViewController {
 
         cell.textLabel?.text = ""
         cell.detailTextLabel?.text = currencies[indexPath.row]
-        cell.imageView?.image = UIImage(named: currencies[indexPath.row])
+        cell.imageView?.image = UIImage(named: currencies[indexPath.row] + "_table")
 
         return cell
     }
