@@ -1,8 +1,9 @@
 <html>
-  <head>
-    <title> Currency converter </title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Currency converter</title>
+</head>
+<body>
     Currency converter
-  </body>
+</body>
 </html>
