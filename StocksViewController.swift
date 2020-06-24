@@ -14,7 +14,9 @@ class StocksViewController: UIViewController, WKNavigationDelegate {
     
     override func loadView() {
         webView = WKWebView()
+        
         webView.navigationDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
         view = webView
     }
 

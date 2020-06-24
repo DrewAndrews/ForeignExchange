@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet var convertedCurrencyButton: UIButton!
     
     @IBOutlet var currencyToConvertTextFieled: UITextField!
-    @IBOutlet var convertedCurrencyLabel: UILabel!
+    @IBOutlet var convertedCurrencyLabel: MarginLabel!
     
     static var imageCurrencyToConvert = UIImage(named: "USD")
     static var imageConvertedCurrency = UIImage(named: "RUB")
@@ -44,33 +44,28 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
         
+        currencyToConvertTextFieled.backgroundColor = view.backgroundColor
         
         currencyToConvertTextFieled.layer.borderWidth = 1
         currencyToConvertTextFieled.layer.borderColor = UIColor.lightGray.cgColor
-        currencyToConvertTextFieled.layer.cornerRadius = 20
-        
+        currencyToConvertTextFieled.layer.cornerRadius = 5
+        currencyToConvertTextFieled.adjustsFontSizeToFitWidth = true
+
         convertedCurrencyLabel.layer.borderWidth = 1
         convertedCurrencyLabel.layer.borderColor = UIColor.lightGray.cgColor
-        convertedCurrencyLabel.layer.cornerRadius = 20
+        convertedCurrencyLabel.layer.cornerRadius = 5
+    }
+    
+    override func viewDidLayoutSubviews() {
+        currencyToConvertTextFieled.font = convertedCurrencyLabel.font
     }
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.7) {
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.7, y: 1.7)
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
-            
-            self.getAndParse()
         }
-    }
-    
-    func addToHistory() {
-        let doubleCurrencyValue = String(Double(self.currencyToConvertTextFieled.text!)!) + " " + ViewController.baseCurrency
-        let convertion = Convertion(currencyToConvertImage: ViewController.imageCurrencyToConvert!, convertedCurrencyImage: ViewController.imageConvertedCurrency!,
-                                    toConvertValue: doubleCurrencyValue,
-                                    convertedValue: self.convertedCurrencyLabel.text!)
-        
-        HistoryTableViewController.histories.append(convertion)
-        HistoryTableViewController.histories = HistoryTableViewController.histories.reversed()
+        self.getAndParse()
     }
     
     @IBAction func changeButtonTapped(_ sender: UIButton) {
@@ -85,21 +80,39 @@ class ViewController: UIViewController {
     }
     
     func getAndParse() {
-        let url = URL(string: "https://api.exchangeratesapi.io/latest?base=\(ViewController.baseCurrency)&symbols=\(ViewController.self.toConvertCurrency)")!
+        guard let fieldValue = Double(currencyToConvertTextFieled.text!) else {
+            let ac = UIAlertController(title: "Incorrect value", message: "Please, enter correct value", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Accept", style: .default, handler: nil))
+            convertedCurrencyLabel.text = "0.0"
+            present(ac, animated: true)
+            return
+        }
         
-        if let data = try? Data(contentsOf: url) {
-            let jsonDecoder = JSONDecoder()
+        DispatchQueue.global(qos: .userInitiated).async {
+            let url = URL(string: "https://api.exchangeratesapi.io/latest?base=\(ViewController.baseCurrency)&symbols=\(ViewController.self.toConvertCurrency)")!
             
-            if let cur = try? jsonDecoder.decode(Currency.self, from: data) {
-                if let valueToConvert = cur.rates[ViewController.toConvertCurrency],
-                    let fieldValue = Double(currencyToConvertTextFieled.text!) {
-                    let total = valueToConvert * fieldValue
-                    convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
-                    addToHistory()
+            if let data = try? Data(contentsOf: url) {
+                let jsonDecoder = JSONDecoder()
+                if let cur = try? jsonDecoder.decode(Currency.self, from: data) {
+                    if let valueToConvert = cur.rates[ViewController.toConvertCurrency] {
+                        let total = valueToConvert * fieldValue
+                        DispatchQueue.main.async {
+                            self.convertedCurrencyLabel.text = String(format: "%.2f", total) + " " + ViewController.toConvertCurrency
+                        }
+                        return
+                    }
                 }
-            } else {
-                convertedCurrencyLabel.text = String(0)
             }
+            self.showConnectionError()
+        }
+    }
+    
+    func showConnectionError() {
+        DispatchQueue.main.async {
+            let ac = UIAlertController(title: "Connection error", message: "Couldn't load data from server. Please, check your connection", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.convertedCurrencyLabel.text = "0.0"
+            self.present(ac, animated: true)
         }
     }
     
@@ -120,9 +133,4 @@ class ViewController: UIViewController {
         
         getAndParse()
     }
-    
-    @IBAction func unwindAndClear(segue: UIStoryboardSegue) {
-        HistoryTableViewController.histories.removeAll()
-    }
 }
-
