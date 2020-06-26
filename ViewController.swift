@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         currencyToConvertTextFieled.font = convertedCurrencyLabel.font
-        convertedCurrencyButton.frame = CGRect(x: convertedCurrencyButton.frame.minX, y: convertedCurrencyButton.frame.minY, width: currencyToConvertButton.frame.width, height: currencyToConvertButton.frame.height)
+        //convertedCurrencyButton.frame = CGRect(x: convertedCurrencyButton.frame.minX, y: convertedCurrencyButton.frame.minY, width: currencyToConvertButton.frame.width, height: currencyToConvertButton.frame.height)
     }
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
