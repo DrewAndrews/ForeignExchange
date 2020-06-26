@@ -54,10 +54,19 @@ class ViewController: UIViewController {
         convertedCurrencyLabel.layer.borderWidth = 1
         convertedCurrencyLabel.layer.borderColor = UIColor.lightGray.cgColor
         convertedCurrencyLabel.layer.cornerRadius = 5
+        
+        currencyToConvertButton.layer.borderWidth = 1.3
+        currencyToConvertButton.layer.borderColor = UIColor(ciColor: .white).cgColor
+        currencyToConvertButton.layer.cornerRadius = 32
+        
+        convertedCurrencyButton.layer.borderWidth = 1.3
+        convertedCurrencyButton.layer.borderColor = UIColor(ciColor: .white).cgColor
+        convertedCurrencyButton.layer.cornerRadius = 32
     }
     
     override func viewDidLayoutSubviews() {
         currencyToConvertTextFieled.font = convertedCurrencyLabel.font
+        convertedCurrencyButton.frame = CGRect(x: convertedCurrencyButton.frame.minX, y: convertedCurrencyButton.frame.minY, width: currencyToConvertButton.frame.width, height: currencyToConvertButton.frame.height)
     }
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
@@ -76,15 +85,16 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
         
+        guard Double(currencyToConvertTextFieled.text!) != nil else { convertedCurrencyLabel.text = "0.0"
+            return
+        }
+        
         getAndParse()
     }
     
     func getAndParse() {
         guard let fieldValue = Double(currencyToConvertTextFieled.text!) else {
-            let ac = UIAlertController(title: "Incorrect value", message: "Please, enter correct value", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Accept", style: .default, handler: nil))
-            convertedCurrencyLabel.text = "0.0"
-            present(ac, animated: true)
+            showValueError()
             return
         }
         
@@ -105,6 +115,13 @@ class ViewController: UIViewController {
             }
             self.showConnectionError()
         }
+    }
+    
+    func showValueError() {
+        let ac = UIAlertController(title: "Incorrect value", message: "Please, enter correct number", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Accept", style: .default, handler: nil))
+        convertedCurrencyLabel.text = "0.0"
+        present(ac, animated: true)
     }
     
     func showConnectionError() {
@@ -131,6 +148,9 @@ class ViewController: UIViewController {
         currencyToConvertButton.setImage(ViewController.imageCurrencyToConvert, for: .normal)
         convertedCurrencyButton.setImage(ViewController.imageConvertedCurrency, for: .normal)
         
+        guard Double(currencyToConvertTextFieled.text!) != nil else { convertedCurrencyLabel.text = "0.0"
+            return
+        }
         getAndParse()
     }
 }

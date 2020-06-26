@@ -9,7 +9,7 @@
 import UIKit
 
 class CurrenciesTableViewController: UITableViewController {
-    let currencies = ["RUB", "USD", "CAD", "EUR", "CZK", "GBP", "ISK", "MXN", "RON", "HKD", "PLN", "KRW", "PHP", "DKK", "HUF", "SEK", "IDR", "INR", "BRL"].sorted()
+    let currencies = ["RUB", "USD", "CAD", "EUR", "CZK", "GBP", "ISK", "MXN", "RON", "HKD", "PLN", "KRW", "PHP", "DKK", "HUF", "SEK", "IDR", "INR", "BRL", "JPY", "THB", "CHF", "MYR", "BGN", "TRY", "CNY", "NOK", "NZD", "ZAR", "SGD", "AUD", "ILS"].sorted()
     
     var forConverting = false
     var forResult = false
@@ -32,12 +32,17 @@ class CurrenciesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath)
-
+        configure(for: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    func configure(for cell: UITableViewCell, indexPath: IndexPath) {
         cell.textLabel?.text = ""
         cell.detailTextLabel?.text = currencies[indexPath.row]
+        cell.imageView?.layer.borderWidth = 1.3
+        cell.imageView?.layer.borderColor = UIColor(ciColor: .white).cgColor
+        cell.imageView?.layer.cornerRadius = 18
         cell.imageView?.image = UIImage(named: currencies[indexPath.row] + "_table")
-
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

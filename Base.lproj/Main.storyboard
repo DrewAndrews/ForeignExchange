@@ -11,7 +11,7 @@
         <scene sceneID="TOD-lW-ozn">
             <objects>
                 <navigationController id="0GJ-7I-VC7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Currencies" image="cur" id="Nfs-dT-ZwZ"/>
+                    <tabBarItem key="tabBarItem" title="Currencies" image="er" id="Nfs-dT-ZwZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OkK-tW-CA3">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -155,28 +155,16 @@
                                     <action selector="convertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fzq-ZK-ItO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO6-XJ-E4Q">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO6-XJ-E4Q">
                                 <rect key="frame" x="38" y="213" width="30" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hO6-XJ-E4Q" secondAttribute="height" multiplier="2:5" id="YZ1-yH-T4C"/>
                                 </constraints>
-                                <state key="normal" image="ch"/>
+                                <state key="normal" image="change_arrow"/>
                                 <connections>
                                     <action selector="changeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4gh-YJ-cpP"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwJ-1F-uXw" customClass="GradientView" customModule="ForeignExchange" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="0.011064622832811254" green="0.31017244170984459" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qL-aS-tfl">
                                 <rect key="frame" x="20" y="138" width="67" height="65"/>
                                 <constraints>
@@ -211,22 +199,13 @@
                             <constraint firstItem="7qL-aS-tfl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Pwm-JU-qyS"/>
                             <constraint firstItem="Xkx-Lb-o6M" firstAttribute="leading" secondItem="uSl-9R-gmA" secondAttribute="trailing" constant="48" id="Q9D-Y0-VIS"/>
                             <constraint firstItem="aIc-MM-LHP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="S8A-0U-W6i"/>
-                            <constraint firstItem="dwJ-1F-uXw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b75-E4-jCM"/>
-                            <constraint firstItem="dwJ-1F-uXw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="e7R-7q-GSK"/>
                             <constraint firstItem="uSl-9R-gmA" firstAttribute="top" secondItem="hO6-XJ-E4Q" secondAttribute="bottom" constant="10" id="ieS-A1-3xX"/>
-                            <constraint firstItem="dwJ-1F-uXw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jAi-p8-UGg"/>
                             <constraint firstItem="hO6-XJ-E4Q" firstAttribute="top" secondItem="7qL-aS-tfl" secondAttribute="bottom" constant="10" id="nEI-d4-7n6"/>
-                            <constraint firstItem="dwJ-1F-uXw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nPf-QE-qcP"/>
                             <constraint firstItem="hO6-XJ-E4Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="pmy-m0-yMS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aIc-MM-LHP" secondAttribute="trailing" constant="60" id="rdU-cF-1dg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xkx-Lb-o6M" secondAttribute="trailing" constant="20" id="x8A-BE-lcU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="dwJ-1F-uXw"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Currency converter" largeTitleDisplayMode="never" id="ddd-ZV-3oC"/>
                     <connections>
@@ -249,13 +228,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="currencyCell" textLabel="x4x-8W-pXf" detailTextLabel="lpX-7J-Y0q" style="IBUITableViewCellStyleValue1" id="GZq-qN-xW9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currencyCell" textLabel="x4x-8W-pXf" detailTextLabel="lpX-7J-Y0q" style="IBUITableViewCellStyleValue1" id="GZq-qN-xW9">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GZq-qN-xW9" id="QoC-sn-asF">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x4x-8W-pXf">
@@ -266,7 +245,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpX-7J-Y0q">
-                                            <rect key="frame" x="331" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="350" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -297,7 +276,7 @@
         <scene sceneID="YYt-De-B4O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D7H-Ae-3JL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Location" image="loc" id="3ND-iF-cRc"/>
+                    <tabBarItem key="tabBarItem" title="Location" image="location" id="3ND-iF-cRc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s1n-9p-zmg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -328,9 +307,9 @@
     <resources>
         <image name="RUB" width="65" height="65"/>
         <image name="USD" width="65" height="65"/>
-        <image name="ch" width="30" height="75"/>
-        <image name="cur" width="18" height="18"/>
-        <image name="loc" width="18" height="18"/>
-        <image name="stock" width="18" height="18"/>
+        <image name="change_arrow" width="30" height="75"/>
+        <image name="er" width="20" height="20"/>
+        <image name="location" width="20" height="20"/>
+        <image name="stock" width="20" height="20"/>
     </resources>
 </document>
