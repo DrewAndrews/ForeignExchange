@@ -64,10 +64,6 @@ class ViewController: UIViewController {
         convertedCurrencyButton.layer.cornerRadius = 32
     }
     
-    override func viewDidLayoutSubviews() {
-        currencyToConvertTextFieled.font = convertedCurrencyLabel.font
-    }
-    
     @IBAction func convertButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.7) {
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.7, y: 1.7)

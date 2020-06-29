@@ -16,8 +16,6 @@ class CurrenciesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
 
     // MARK: - Table view data source
@@ -58,11 +56,19 @@ class CurrenciesTableViewController: UITableViewController {
         
         if segue.identifier == "returnToCurList" {
             if forConverting {
+                if currencies[index] == ViewController.toConvertCurrency {
+                    ViewController.imageConvertedCurrency = ViewController.imageCurrencyToConvert
+                    ViewController.toConvertCurrency = ViewController.baseCurrency
+                }
                 ViewController.imageCurrencyToConvert = UIImage(named: currencies[index])!
                 ViewController.baseCurrency = currencies[index]
                 forConverting = false
             }
             else if forResult {
+                if currencies[index] == ViewController.baseCurrency {
+                    ViewController.imageCurrencyToConvert = ViewController.imageConvertedCurrency
+                    ViewController.baseCurrency = ViewController.toConvertCurrency
+                }
                 ViewController.imageConvertedCurrency = UIImage(named: currencies[index])!
                 ViewController.toConvertCurrency = currencies[index]
                 forResult = false
