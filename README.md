@@ -5,4 +5,4 @@
 
 ![main](main.png)
 ![Currencies page](cur.png)
-![Stocks page](stock.png)
+![Stocks page](stocks.png)
