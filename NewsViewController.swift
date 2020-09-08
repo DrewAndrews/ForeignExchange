@@ -1,15 +1,15 @@
 //
-//  StocksViewController.swift
+//  NewsViewController.swift
 //  ForeignExchange
 //
-//  Created by Andrey Rusinovich on 21.06.2020.
+//  Created by Andrey Rusinovich on 08.09.2020.
 //  Copyright © 2020 Andrey Rusinovich. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
-class StocksViewController: UIViewController, WKNavigationDelegate, UIScrollViewDelegate {
+class NewsViewController: UIViewController, WKNavigationDelegate, UIScrollViewDelegate {
     var webView: WKWebView!
     
     override func loadView() {
@@ -24,7 +24,7 @@ class StocksViewController: UIViewController, WKNavigationDelegate, UIScrollView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://www.bloomberg.com/markets/stocks")!
+        let url = URL(string: "https://www.bloomberg.com/quote/USDRUB:CUR")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
