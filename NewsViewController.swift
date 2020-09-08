@@ -12,6 +12,8 @@ import WebKit
 class NewsViewController: UIViewController, WKNavigationDelegate, UIScrollViewDelegate {
     var webView: WKWebView!
     
+    let url = URL(string: "https://www.bloomberg.com/quote/USDRUB:CUR")!
+    
     override func loadView() {
         webView = WKWebView()
         
@@ -24,12 +26,16 @@ class NewsViewController: UIViewController, WKNavigationDelegate, UIScrollViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://www.bloomberg.com/quote/USDRUB:CUR")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
+    
+    
+    @IBAction func reloadNewsPage(_ sender: UIBarButtonItem) {
+        webView.load(URLRequest(url: url))
     }
 }

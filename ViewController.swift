@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func convertButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.55) {
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.7, y: 1.7)
             self.convertButton.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
         }

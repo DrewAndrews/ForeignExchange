@@ -12,6 +12,8 @@ import WebKit
 class StocksViewController: UIViewController, WKNavigationDelegate, UIScrollViewDelegate {
     var webView: WKWebView!
     
+    let url = URL(string: "https://www.bloomberg.com/markets/stocks")!
+    
     override func loadView() {
         webView = WKWebView()
         
@@ -24,12 +26,15 @@ class StocksViewController: UIViewController, WKNavigationDelegate, UIScrollView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://www.bloomberg.com/markets/stocks")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
     
     func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
+    
+    @IBAction func reloadStocksPage(_ sender: UIBarButtonItem) {
+        webView.load(URLRequest(url: url))
     }
 }

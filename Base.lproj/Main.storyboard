@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Ic-Dm-4hX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
                 <navigationController id="0GJ-7I-VC7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Currencies" image="er" id="Nfs-dT-ZwZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OkK-tW-CA3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -64,7 +64,7 @@
                 <navigationController id="hg2-m4-5Bv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Stocks" image="stock" id="Akw-46-8p7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gPt-bN-pyF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,7 +89,7 @@
                 <navigationController id="bN1-E3-MgE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="text.bubble" catalog="system" id="apM-MU-SDG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yQ5-l1-HLZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -109,12 +109,18 @@
             <objects>
                 <viewController id="wDg-m8-EHb" customClass="NewsViewController" customModule="ForeignExchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lzb-pL-3E6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Rsa-re-LrS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="yh8-M0-y42"/>
+                    <navigationItem key="navigationItem" title="News" id="yh8-M0-y42">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="ul5-3u-CVo">
+                            <connections>
+                                <action selector="reloadNewsPage:" destination="wDg-m8-EHb" id="FTB-vb-cbW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEO-YZ-hzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,12 +131,18 @@
             <objects>
                 <viewController id="fc5-g4-MVM" customClass="StocksViewController" customModule="ForeignExchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VXl-LE-sFw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="nsr-wo-GWh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Stocks" id="Ewh-wk-Qgi"/>
+                    <navigationItem key="navigationItem" title="Stocks" id="Ewh-wk-Qgi">
+                        <barButtonItem key="rightBarButtonItem" image="arrow.counterclockwise" catalog="system" id="6IY-lA-qt2">
+                            <connections>
+                                <action selector="reloadStocksPage:" destination="fc5-g4-MVM" id="tRU-do-cZt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqX-34-3zx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,11 +153,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ForeignExchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="teA-Qz-73Y">
-                                <rect key="frame" x="124" y="151" width="270" height="38"/>
+                                <rect key="frame" x="124" y="107" width="270" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="teA-Qz-73Y" secondAttribute="height" multiplier="135:19" id="ckU-bH-RYA"/>
                                 </constraints>
@@ -154,7 +166,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSl-9R-gmA">
-                                <rect key="frame" x="20" y="294" width="65" height="65"/>
+                                <rect key="frame" x="20" y="250" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uSl-9R-gmA" secondAttribute="height" multiplier="1:1" id="vAM-KY-kG6"/>
                                 </constraints>
@@ -164,7 +176,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO6-XJ-E4Q">
-                                <rect key="frame" x="38" y="211" width="30" height="75"/>
+                                <rect key="frame" x="38" y="167" width="30" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hO6-XJ-E4Q" secondAttribute="height" multiplier="2:5" id="Xhg-w5-rma"/>
                                 </constraints>
@@ -174,7 +186,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qL-aS-tfl">
-                                <rect key="frame" x="20" y="138" width="65" height="65"/>
+                                <rect key="frame" x="20" y="94" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7qL-aS-tfl" secondAttribute="height" multiplier="1:1" id="sKb-x0-LVR"/>
                                 </constraints>
@@ -186,7 +198,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xkx-Lb-o6M" customClass="MarginLabel" customModule="ForeignExchange" customModuleProvider="target">
-                                <rect key="frame" x="124" y="307" width="270" height="38"/>
+                                <rect key="frame" x="124" y="263" width="270" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xkx-Lb-o6M" secondAttribute="height" multiplier="135:19" id="mty-gG-Jq6"/>
                                 </constraints>
@@ -195,7 +207,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIc-MM-LHP">
-                                <rect key="frame" x="57" y="707" width="300" height="70"/>
+                                <rect key="frame" x="57" y="581" width="300" height="70"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aIc-MM-LHP" secondAttribute="height" multiplier="30:7" id="v1F-wI-Jts"/>
@@ -246,27 +258,27 @@
             <objects>
                 <tableViewController id="8XG-6S-7MU" customClass="CurrenciesTableViewController" customModule="ForeignExchange" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Em-gm-yr6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currencyCell" textLabel="x4x-8W-pXf" detailTextLabel="lpX-7J-Y0q" style="IBUITableViewCellStyleValue1" id="GZq-qN-xW9">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GZq-qN-xW9" id="QoC-sn-asF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x4x-8W-pXf">
-                                            <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpX-7J-Y0q">
-                                            <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                            <rect key="frame" x="350" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -301,9 +313,10 @@
     <resources>
         <image name="RUB" width="65" height="65"/>
         <image name="USD" width="65" height="65"/>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="change_arrow" width="30" height="75"/>
-        <image name="er" width="20" height="20"/>
-        <image name="stock" width="20" height="20"/>
+        <image name="er" width="26.666666030883789" height="26.666666030883789"/>
+        <image name="stock" width="26.666666030883789" height="26.666666030883789"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
     </resources>
 </document>
