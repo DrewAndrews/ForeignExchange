@@ -8,17 +8,6 @@
 
 import UIKit
 
-extension UIViewController {
-    func hideKeyboard() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
 class ViewController: UIViewController {
     @IBOutlet var convertButton: UIButton!
     
@@ -147,5 +136,16 @@ class ViewController: UIViewController {
             return
         }
         getAndParse()
+    }
+}
+
+extension UIViewController {
+    func hideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

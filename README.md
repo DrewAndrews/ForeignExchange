@@ -4,7 +4,7 @@
 * Bloomberg stocks page
 * USD/RUB News page
 
-![main](main.png)
-![Currencies page](cur.png)
-![Stocks page](stocks.png)
-![News page](newsPage.png)
+![main](CurrencyPageScreen.png)
+![Currencies page](CurrenciesPageScreen.png)
+![Stocks page](StocksPageScreen.png)
+![News page](NewsPageScreen.png)
